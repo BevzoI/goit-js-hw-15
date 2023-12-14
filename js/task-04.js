@@ -1,14 +1,22 @@
-const counter = document.querySelector('#value');
-const actions = document.querySelectorAll('button[data-action]');
-let counterValue = counter.textContent;
+const decrementBtn = document.querySelector('[data-action="decrement"]');
+const incrementBtn = document.querySelector('[data-action="increment"]');
+const counterValue = document.getElementById('value');
 
-actions.forEach(action => {
-    action.addEventListener('click', () => {
-        if (action.dataset.action === 'increment') {
-            counterValue++;
-        } else if (action.dataset.action === 'decrement') {
-            counterValue--;
-        }
-        counter.textContent = counterValue;
-    });
+
+let counter = 0;
+
+
+function updateCounterValue(value) {
+  counterValue.textContent = value;
+}
+
+
+decrementBtn.addEventListener('click', () => {
+  counter -= 1;
+  updateCounterValue(counter);
+});
+
+incrementBtn.addEventListener('click', () => {
+  counter += 1;
+  updateCounterValue(counter);
 });
